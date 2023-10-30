@@ -41,3 +41,25 @@ function evaluateExpression() {
 }
 
 clearDisplay();
+
+// Add event listeners to handle both touch and keyboard input
+document.getElementById('calculator').addEventListener('click', function (event) {
+  if (event.target.tagName === 'BUTTON') {
+    const buttonValue = event.target.innerText;
+    appendValue(buttonValue);
+  }
+});
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    evaluateExpression();
+  } else if (event.key === 'Escape') {
+    clearDisplay();
+  } else if (event.key === '=') {
+    evaluateExpression();
+  } else {
+    appendValue(event.key);
+  }
+});
+
+ 
